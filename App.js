@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import First from './First';
+import Second from './Second'
+// import App from '.'
+
 
 class App extends Component {
   constructor(props) {
@@ -22,9 +27,12 @@ class App extends Component {
     if(this.state.tampilkanHome){
       return (
         <View >
-          <Text >
-            Ini Home
-          </Text>
+         <TouchableOpacity
+            style={[styles.buttonContainer, styles.loginButton]}
+            onPress={() => this.props.navigation.navigate('First')}
+          >
+          <Text style={{color:'white'}}>First</Text>
+        </TouchableOpacity>
         </View>
       );
     } else{
@@ -48,6 +56,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 20
   },
+
   title: {
     fontSize: 26,
     color: '#fff',
@@ -55,15 +64,31 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 20,
   },
+
   text: {
     color: '#fff',
     fontSize: 20,
   },
+
   image: {
     width: 200,
     height: 200,
     resizeMode: 'contain'
-  }
+  },
+
+  buttonContainer: {
+    height:45,
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom:20,
+    width:250,
+    borderRadius:30,
+  },
+
+  loginButton: {
+    backgroundColor: '#3498db',
+  },
 });
  
 const slides = [
@@ -119,4 +144,27 @@ const slides = [
   },
 ];
 
-export default App
+const AppNavigator = createStackNavigator({
+  App:{
+    screen: App,
+    navigationOptions: {
+      header: null,
+    },
+  },
+ 
+  First:{
+    screen: First,
+    navigationOptions: {
+      header: null,
+    },
+  },
+  
+  // Second:{
+  //   screen: Second,
+  //   navigationOptions: {
+  //     header: null,
+  //   },
+  // }
+})
+
+export default createAppContainer(AppNavigator)
