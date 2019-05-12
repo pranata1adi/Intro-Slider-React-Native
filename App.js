@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { StyleSheet, View, Text, Platform } from 'react-native';
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import AppIntroSlider from 'react-native-app-intro-slider';
- 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -9,31 +9,31 @@ class App extends Component {
       tampilkanHome: false
     };
   }
- 
-  on_Done_all_slides = () => {
-    this.setState({ tampilkanHome: true });
-  };
- 
-  on_Skip_slides = () => {
-    this.setState({ tampilkanHome: true });
-  };
+
+  done = () => {
+    this.setState({ tampilkanHome: true })
+  }
+
+  skip = () => {
+    this.setState({ tampilkanHome: true })
+  }
   
   render() {
-    if (this.state.tampilkanHome) {
+    if(this.state.tampilkanHome){
       return (
-        <View style={styles.MainContainer}>
-          <Text style={{ textAlign: 'center', fontSize: 20, color: '#000' }}>
+        <View >
+          <Text >
             Ini Home
           </Text>
         </View>
       );
-    } else {
-      return (
+    } else{
+      return(
         <AppIntroSlider
           slides={slides}
-          onDone={this.on_Done_all_slides}
+          onDone={this.done}
           showSkipButton={true}
-          onSkip={this.on_Skip_slides}
+          onSkip={this.skip}
         />
       );
     }
@@ -68,12 +68,12 @@ const styles = StyleSheet.create({
  
 const slides = [
   {
-    key: 'k1',
-    title: 'Event Organizer',
-    text: 'Best Event Organizers',
+    key: 'id1',
+    title: 'Slide Pertama',
+    text: 'Ini Slide Pertama',
     image: {
       uri:
-        'https://reactnativecode.com/wp-content/uploads/2019/04/calendar.png',
+        'https://www.inovex.de/blog/wp-content/uploads/2018/03/react-native.png',
     },
     titleStyle: styles.title,
     textStyle: styles.text,
@@ -81,12 +81,12 @@ const slides = [
     backgroundColor: '#FF1744',
   },
   {
-    key: 'k2',
-    title: 'Weather Reports',
-    text: 'Latest Weather Reports',
+    key: 'id2',
+    title: 'Slide Kedua',
+    text: 'Ini Slide Kedua',
     image: {
       uri:
-        'https://reactnativecode.com/wp-content/uploads/2019/04/cloud.png',
+        'https://www.inovex.de/blog/wp-content/uploads/2018/03/react-native.png',
     },
     titleStyle: styles.title,
     textStyle: styles.text,
@@ -94,11 +94,11 @@ const slides = [
     backgroundColor: '#D500F9',
   },
   {
-    key: 'k3',
-    title: 'Technology Informations',
-    text: 'Latest Technology Reports',
+    key: 'id3',
+    title: 'Slide Ketiga',
+    text: 'Ini Slide Ketiga',
     image: {
-      uri: 'https://reactnativecode.com/wp-content/uploads/2019/04/computer.png',
+      uri: 'https://www.inovex.de/blog/wp-content/uploads/2018/03/react-native.png',
     },
     titleStyle: styles.title,
     textStyle: styles.text,
@@ -106,29 +106,16 @@ const slides = [
     backgroundColor: '#2979FF',
   },
   {
-    key: 'k4',
-    title: 'Flight Bookings',
-    text: ' Best Deals on Flights',
+    key: 'id4',
+    title: 'Slide Keempat',
+    text: ' Ini Slide Keempat',
     image: {
-      uri: 'https://reactnativecode.com/wp-content/uploads/2019/04/flight.png',
+      uri: 'https://www.inovex.de/blog/wp-content/uploads/2018/03/react-native.png',
     },
     titleStyle: styles.title,
     textStyle: styles.text,
     imageStyle: styles.image,
     backgroundColor: '#1DE9B6',
-  },
-  {
-    key: 'k5',
-    title: 'Restaurant Bookings',
-    text: ' 20% off on first Restaurant booking',
-    image: {
-      uri:
-        'https://reactnativecode.com/wp-content/uploads/2019/04/restaurants.png',
-    },
-    titleStyle: styles.title,
-    textStyle: styles.text,
-    imageStyle: styles.image,
-    backgroundColor: '#FF3D00',
   },
 ];
 
